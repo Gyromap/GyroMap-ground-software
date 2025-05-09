@@ -54,7 +54,7 @@ with open(file_2, 'at') as f:
             P_DATA = [D[0], D[1], D[2], D[3], D[4], D[5], D[16], D[15], D[17], D[13], D[14], 100*(log(D[15])/(log(0.9877)))]
             try:
                 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-                    Data = [float(x) if isinstance(x, float64) else x for x in Data] #converte tutti i valori in float64 di numpy (valori vettoriali)
+                    P_DATA = [float(x) if isinstance(x, float64) else x for x in Data] #converte tutti i valori in float64 di numpy (valori vettoriali)
                     s.connect((HOST, PORT)) #tenta la connessione al server
                     s.sendall(str(Data).encode('utf-8'))  #codifica i dati in utf-8 e li manda al server
             except ConnectionRefusedError:
